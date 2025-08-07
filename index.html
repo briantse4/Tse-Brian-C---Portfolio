@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tse Brian C - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background:url('images/image.1\ \(2\).jpg');
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Starfield Background */
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(35px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .typing-text {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            min-height: 4rem;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+        }
+
+        .hero-quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #60a5fa;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: rgba(96, 165, 250, 0.1);
+            border-radius: 1rem;
+            border-left: 4px solid #60a5fa;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Motivational Quote */
+        .quote-section {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quote-container {
+            position: relative;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .quote-icon {
+            font-size: 3rem;
+            color: #60a5fa;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            color: #f3f4f6;
+        }
+
+        .quote-author {
+            font-size: 1.1rem;
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
+        .quote-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .quote-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quote-dot.active {
+            background: #60a5fa;
+            transform: scale(1.2);
+        }
+
+        /* Pulsing Animation */
+        .pulsing-container {
+            display: flex;
+            justify-content: center;
+            padding: 3rem 0;
+        }
+
+        .pulsing-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 1rem;
+            animation: pulseAndColor 4s infinite ease-in-out;
+        }
+
+        @keyframes pulseAndColor {
+            0% {
+                transform: scale(1);
+                background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            }
+            25% {
+                transform: scale(1.2);
+                background: linear-gradient(45deg, #ef4444, #f97316);
+                box-shadow: 0 0 30px rgba(239, 68, 68, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                background: linear-gradient(45deg, #10b981, #06b6d4);
+                box-shadow: 0 0 25px rgba(16, 185, 129, 0.5);
+            }
+            75% {
+                transform: scale(1.3);
+                background: linear-gradient(45deg, #f59e0b, #eab308);
+                box-shadow: 0 0 35px rgba(245, 158, 11, 0.5);
+            }
+            100% {
+                transform: scale(1);
+                background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            }
+        }
+
+        /* Achievements */
+        .achievements-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .achievement-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInStagger 0.6s ease-out forwards;
+        }
+
+        @keyframes slideInStagger {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .achievement-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .achievement-dot {
+            width: 8px;
+            height: 8px;
+            background: #60a5fa;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: skillFadeIn 0.6s ease-out forwards;
+        }
+
+        .skill-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        @keyframes skillFadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .skill-media {
+            margin-bottom: 1rem;
+        }
+
+        .skill-image {
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(139, 92, 246, 0.2));
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #60a5fa;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .skill-emoji {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-profile {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .skill-video {
+            width: 100%;
+            height: 80px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-info {
+            text-align: center;
+        }
+
+        .skill-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            color: #d1d5db;
+        }
+
+        /* Soft Skills */
+        .soft-skills-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, rgba(96, 165, 250, 0.2), rgba(139, 92, 246, 0.2));
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeInScale 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInScale {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            color: #60a5fa;
+            font-size: 1.25rem;
+        }
+
+        .map-container {
+            aspect-ratio: 16/9;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #d1d5db;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.5rem;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #60a5fa;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #60a5fa, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(96, 165, 250, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-status {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .form-status.success {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .form-status.error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Social Media */
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .social-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            min-width: 120px;
+        }
+
+        .social-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05) translateY(-5px);
+            color: white;
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            color: #60a5fa;
+            margin-bottom: 0.5rem;
+        }
+
+        .social-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .social-handle {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        /* Footer */
+        footer {
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Scroll Reveal Animation */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .typing-text {
+                font-size: 2rem;
+            }
+
+            .quote-text {
+                font-size: 1.4rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-grid {
+                gap: 1rem;
+            }
+
+            .social-card {
+                min-width: 100px;
+                padding: 1rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Starfield Canvas -->
+    <canvas id="starfield"></canvas>
+</style>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Tse Brian C.</div>
+            <ul class="nav-links">
+                <marquee>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li></marquee>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="profile-image">
+                <img src="images/image.jpg">
+            </div>
+            <h1 class="typing-text" id="typing-text"></h1>
+            <p class="hero-subtitle">Biochemistry Student | Frontend Developer | Future Medical Professional</p>
+            <div class="hero-quote">
+                "Excellence is not a skill, it's an attitude. I strive to bring passion and dedication to everything I do." 💫
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Biography Section -->
+    <section id="about" class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Biography</h2>
+            <div class="glass-card">
+                <p>My name is Tse Brian C. I'm from Mankon, a village in the Bamenda II Subdivision of the Mezam Division, located in Cameroon's Northwest Region. I attended two primary schools (Fountain Bilingual Nursery and Primary school (nursery 1 to Primary five) and Immaculate conception nursery and primary school (Primary 6)) and two secondary schools (GBHS Bamenda form 1-4 and PCHS Bamenda high school), maintaining a good academic record throughout. I'm currently studying Biochemistry at the University of Bamenda. Currently I'm doing a tech training on front end website development using tools such as HTML and CSS.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aspirations Section -->
+    <section class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Aspirations</h2>
+            <div class="glass-card" style="background: linear-gradient(135deg, rgba(96, 165, 250, 0.1), rgba(139, 92, 246, 0.1));">
+                <p>As a vibrant young individual, I have numerous aspirations and goals, always aiming for excellence. I'm driven to create a significant positive impact on the younger generation and those who look up to me. Although my dream of becoming a medical doctor faced obstacles, which was disheartening, it hasn't deterred me. I remain committed to contributing to the medical field. Furthermore, I believe I was born to lead, and I'm eager to guide younger individuals.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivational Quote Section -->
+    <section class="section quote-section scroll-reveal">
+        <div class="container">
+            <div class="quote-container">
+                <div class="quote-icon">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="quote-text" id="quote-text">
+                    "The future belongs to those who believe in the beauty of their dreams."
+                </div>
+                <div class="quote-author" id="quote-author">
+                    — Eleanor Roosevelt
+                </div>
+                <div class="quote-indicators" id="quote-indicators"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creative Showcase -->
+    <div class="pulsing-container">
+        <div class="pulsing-box"></div>
+    </div>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Achievements</h2>
+            <div class="achievements-grid" id="achievements-grid">
+                <!-- Achievements will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Skills & Expertise</h2>
+            <div class="skills-grid" id="skills-grid">
+                <!-- Skills will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Soft Skills Section -->
+    <section class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Soft Skills</h2>
+            <div class="soft-skills-container" id="soft-skills-container">
+                <!-- Soft skills will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-grid">
+                <div>
+                    <div class="glass-card">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div>
+                                <strong>Addresses</strong>
+                                <p>Mile 7 Mankon opposite the catholic church</p>
+                                <p>Mile 9 Bambui</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card" style="margin-top: 1rem;">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <div>
+                                <strong>Email</strong>
+                                <p><a href="mailto:briantse4@gmail.com" style="color: #60a5fa;">briantse4@gmail.com</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card" style="margin-top: 1rem;">
+                        <div class="contact-item">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <div>
+                                <strong>Phone</strong>
+                                <p><a href="tel:672739302" style="color: #60a5fa;">672739302</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="contact-form" style="margin-top: 1rem;">
+                        <h3 style="margin-bottom: 1.5rem; color: #60a5fa;"><i class="fas fa-paper-plane"></i> Send Me a Message</h3>
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                            <div id="form-status" class="form-status" style="display: none;"></div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="glass-card">
+                    <h3 style="margin-bottom: 1rem;"><i class="fas fa-map-marker-alt contact-icon"></i> Live Location</h3>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3979.8234567890123!2d10.1234567!3d5.9876543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBamenda%2C%20Cameroon!5e0!3m2!1sen!2s!4v1234567890123!5m2!1sen!2s" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="section scroll-reveal">
+        <div class="container">
+            <h2 class="section-title">Connect With Me</h2>
+            <div class="social-grid">
+                <a href="https://tiktok.com/@juicemolly01" class="social-card" target="_blank">
+                    <i class="fab fa-tiktok social-icon"></i>
+                    <div class="social-name">TikTok</div>
+                    <div class="social-handle">juicemolly01</div>
+                </a>
+                <a href="https://facebook.com" class="social-card" target="_blank">
+                    <i class="fab fa-facebook social-icon"></i>
+                    <div class="social-name">Facebook</div>
+                    <div class="social-handle">Facebook</div>
+                </a>
+                <a href="https://instagram.com" class="social-card" target="_blank">
+                    <i class="fab fa-instagram social-icon"></i>
+                    <div class="social-name">Instagram</div>
+                    <div class="social-handle">Instagram</div>
+                </a>
+                <a href="https://linkedin.com" class="social-card" target="_blank">
+                    <i class="fab fa-linkedin social-icon"></i>
+                    <div class="social-name">LinkedIn</div>
+                    <div class="social-handle">LinkedIn</div>
+                </a>
+                <a href="https://wa.me/674131398" class="social-card" target="_blank">
+                    <i class="fab fa-whatsapp social-icon"></i>
+                    <div class="social-name">WhatsApp</div>
+                    <div class="social-handle">674131398</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Tse Brian C. Crafted with passion and code.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Starfield Background
+        class StarfieldBackground {
+            constructor() {
+                this.canvas = document.getElementById('starfield');
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                this.mouse = { x: 0, y: 0 };
+                
+                this.init();
+                this.animate();
+                this.bindEvents();
+            }
+
+            init() {
+                this.resizeCanvas();
+                this.createParticles();
+            }
+
+            resizeCanvas() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+            }
+
+            createParticles() {
+                const particleCount = Math.floor((this.canvas.width * this.canvas.height) / 8000);
+                this.particles = [];
+
+                for (let i = 0; i < particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5,
+                        size: Math.random() * 2 + 0.5,
+                        opacity: Math.random() * 0.8 + 0.2
+                    });
+                }
+            }
+
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+                this.particles.forEach(particle => {
+                    // Mouse interaction
+                    const dx = this.mouse.x - particle.x;
+                    const dy = this.mouse.y - particle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        const force = (100 - distance) / 100;
+                        particle.vx += (dx / distance) * force * 0.01;
+                        particle.vy += (dy / distance) * force * 0.01;
+                    }
+
+                    // Update position
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+
+                    // Boundary check
+                    if (particle.x < 0 || particle.x > this.canvas.width) particle.vx *= -1;
+                    if (particle.y < 0 || particle.y > this.canvas.height) particle.vy *= -1;
+
+                    // Keep particles in bounds
+                    particle.x = Math.max(0, Math.min(this.canvas.width, particle.x));
+                    particle.y = Math.max(0, Math.min(this.canvas.height, particle.y));
+
+                    // Damping
+                    particle.vx *= 0.99;
+                    particle.vy *= 0.99;
+
+                    // Draw particle
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(255, 255, 255, ${particle.opacity})`;
+                    this.ctx.fill();
+
+                    // Draw connections
+                    this.particles.forEach(otherParticle => {
+                        const dx = particle.x - otherParticle.x;
+                        const dy = particle.y - otherParticle.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+
+                        if (distance < 80) {
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(particle.x, particle.y);
+                            this.ctx.lineTo(otherParticle.x, otherParticle.y);
+                            this.ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 * (1 - distance / 80)})`;
+                            this.ctx.lineWidth = 0.5;
+                            this.ctx.stroke();
+                        }
+                    });
+                });
+
+                requestAnimationFrame(() => this.animate());
+            }
+
+            bindEvents() {
+                window.addEventListener('mousemove', (e) => {
+                    this.mouse.x = e.clientX;
+                    this.mouse.y = e.clientY;
+                });
+
+                window.addEventListener('resize', () => {
+                    this.resizeCanvas();
+                    this.createParticles();
+                });
+            }
+        }
+
+        // Typing Animation
+        class TypingAnimation {
+            constructor(element, text, speed = 100) {
+                this.element = element;
+                this.text = text;
+                this.speed = speed;
+                this.currentIndex = 0;
+                this.displayText = '';
+                
+                this.type();
+            }
+
+            type() {
+                if (this.currentIndex < this.text.length) {
+                    this.displayText += this.text[this.currentIndex];
+                    this.element.innerHTML = this.displayText + '<span class="cursor">|</span>';
+                    this.currentIndex++;
+                    setTimeout(() => this.type(), this.speed);
+                } else {
+                    this.element.innerHTML = this.displayText + '<span class="cursor">|</span>';
+                }
+            }
+        }
+
+        // Motivational Quotes
+        class MotivationalQuotes {
+            constructor() {
+                this.quotes = [
+                    { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+                    { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
+                    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+                    { text: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs" },
+                    { text: "Your limitation—it's only your imagination.", author: "Unknown" },
+                    { text: "Great things never come from comfort zones.", author: "Unknown" },
+                    { text: "Dream it. Wish it. Do it.", author: "Unknown" },
+                    { text: "Don't stop when you're tired. Stop when you're done.", author: "Unknown" }
+                ];
+                
+                this.currentQuote = 0;
+                this.quoteText = document.getElementById('quote-text');
+                this.quoteAuthor = document.getElementById('quote-author');
+                this.indicators = document.getElementById('quote-indicators');
+                
+                this.init();
+            }
+
+            init() {
+                this.createIndicators();
+                this.startRotation();
+            }
+
+            createIndicators() {
+                this.quotes.forEach((_, index) => {
+                    const dot = document.createElement('div');
+                    dot.className = `quote-dot ${index === 0 ? 'active' : ''}`;
+                    dot.addEventListener('click', () => this.setQuote(index));
+                    this.indicators.appendChild(dot);
+                });
+            }
+
+            setQuote(index) {
+                this.currentQuote = index;
+                this.updateQuote();
+                this.updateIndicators();
+            }
+
+            updateQuote() {
+                const quote = this.quotes[this.currentQuote];
+                this.quoteText.style.opacity = '0';
+                this.quoteAuthor.style.opacity = '0';
+                
+                setTimeout(() => {
+                    this.quoteText.textContent = `"${quote.text}"`;
+                    this.quoteAuthor.textContent = `— ${quote.author}`;
+                    this.quoteText.style.opacity = '1';
+                    this.quoteAuthor.style.opacity = '1';
+                }, 300);
+            }
+
+            updateIndicators() {
+                const dots = this.indicators.querySelectorAll('.quote-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentQuote);
+                });
+            }
+
+            startRotation() {
+                setInterval(() => {
+                    this.currentQuote = (this.currentQuote + 1) % this.quotes.length;
+                    this.updateQuote();
+                    this.updateIndicators();
+                }, 6000);
+            }
+        }
+
+        // Scroll Reveal Animation
+        class ScrollReveal {
+            constructor() {
+                this.elements = document.querySelectorAll('.scroll-reveal');
+                this.init();
+            }
+
+            init() {
+                this.observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                this.elements.forEach(element => {
+                    this.observer.observe(element);
+                });
+            }
+        }
+
+        // Contact Form Handler
+        class ContactForm {
+            constructor() {
+                this.form = document.getElementById('contact-form');
+                this.status = document.getElementById('form-status');
+                this.init();
+            }
+
+            init() {
+                this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+            }
+
+            async handleSubmit(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this.form);
+                const data = {
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    subject: formData.get('subject'),
+                    message: formData.get('message')
+                };
+
+                // Show loading state
+                const submitBtn = this.form.querySelector('.submit-btn');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+
+                try {
+                    // Simulate email sending (replace with actual email service)
+                    await this.simulateEmailSend(data);
+                    
+                    this.showStatus('success', 'Message sent successfully! I\'ll get back to you soon. 🚀');
+                    this.form.reset();
+                } catch (error) {
+                    this.showStatus('error', 'Failed to send message. Please try again or contact me directly. 😔');
+                } finally {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            }
+
+            simulateEmailSend(data) {
+                return new Promise((resolve, reject) => {
+                    // Simulate API call delay
+                    setTimeout(() => {
+                        // For demo purposes, we'll always resolve
+                        // In real implementation, integrate with EmailJS, Formspree, or similar service
+                        console.log('Email data:', data);
+                        resolve();
+                    }, 2000);
+                });
+            }
+
+            showStatus(type, message) {
+                this.status.className = `form-status ${type}`;
+                this.status.textContent = message;
+                this.status.style.display = 'block';
+                
+                setTimeout(() => {
+                    this.status.style.display = 'none';
+                }, 5000);
+            }
+        }
+
+        // Populate Achievements
+        function populateAchievements() {
+            const achievements = [
+                "Birthday Certificate",
+                "First Living Standard Certificate (FLSC)",
+                "Religious Certificate",
+                "Barbing Certificate",
+                "Ordinary Level (OL) Certificate",
+                "Advanced Level (AL) Certificate",
+                "Conscript Certificate",
+                "BSc",
+                "IT Tech Certificate"
+            ];
+
+            const container = document.getElementById('achievements-grid');
+            achievements.forEach((achievement, index) => {
+                const item = document.createElement('div');
+                item.className = 'achievement-item glass-card';
+                item.style.animationDelay = `${index * 0.1}s`;
+                item.innerHTML = `
+                    <div class="achievement-content">
+                        <div class="achievement-dot"></div>
+                        <span>${achievement}</span>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // Populate Skills
+        function populateSkills() {
+            const skills = [
+                { name: 'Barbing', category: 'Service', icon: 'fas fa-cut', emoji: '✂️' },
+                { name: 'Web Development', category: 'Tech', icon: 'fas fa-code', emoji: '💻' },
+                { name: 'Graphic Design', category: 'Creative', icon: 'fas fa-paint-brush', emoji: '🎨' },
+                { name: 'Master of Ceremonies (MC)', category: 'Communication', icon: 'fas fa-microphone', emoji: '🎤' },
+                { name: 'Public Speaking', category: 'Communication', icon: 'fas fa-comments', emoji: '🗣️' },
+                { name: 'Footballer', category: 'Sports', icon: 'fas fa-futbol', emoji: '⚽' },
+                { name: 'AI Tech', category: 'Tech', icon: 'fas fa-robot', emoji: '🤖' },
+                { name: 'Business Planner', category: 'Business', icon: 'fas fa-chart-line', emoji: '📊' },
+                { name: 'Video Editor', category: 'Creative', icon: 'fas fa-video', emoji: '🎬' },
+                { name: 'Grant Writer', category: 'Writing', icon: 'fas fa-pen', emoji: '✍️' },
+                { name: 'Welder', category: 'Technical', icon: 'fas fa-tools', emoji: '🔧' }
+            ];
+
+            const container = document.getElementById('skills-grid');
+            skills.forEach((skill, index) => {
+                const card = document.createElement('div');
+                card.className = 'skill-card';
+                card.style.animationDelay = `${index * 0.15}s`;
+                card.innerHTML = `
+                    <div class="skill-media">
+                        <div class="skill-image">
+                            <i class="${skill.icon}"></i>
+                            <div class="skill-emoji">${skill.emoji}</div>
+                        </div>
+                        <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.5rem;">
+                            <img src="image.jpg" alt="Tse Brian Chick" class="skill-profile" style="object-fit: cover;">
+                            <div class="skill-video"></div>
+                        </div>
+                    </div>
+                    <div class="skill-info">
+                        <div class="skill-name">${skill.name}</div>
+                        <span class="skill-category">${skill.category}</span>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // Populate Soft Skills
+        function populateSoftSkills() {
+            const softSkills = [
+                'Leadership 👑', 'Communication 💬', 'Problem Solving 🧩', 'Adaptability 🔄',
+                'Teamwork 🤝', 'Time Management ⏰', 'Critical Thinking 🧠', 'Creativity 💡',
+                'Emotional Intelligence ❤️', 'Mentoring 🎯'
+            ];
+
+            const container = document.getElementById('soft-skills-container');
+            let currentIndex = 0;
+
+            function addSkill() {
+                if (currentIndex < softSkills.length) {
+                    const tag = document.createElement('div');
+                    tag.className = 'skill-tag';
+                    tag.style.animationDelay = `${currentIndex * 0.1}s`;
+                    tag.textContent = softSkills[currentIndex];
+                    container.appendChild(tag);
+                    currentIndex++;
+                    setTimeout(addSkill, 800);
+                } else {
+                    // Reset and start over
+                    setTimeout(() => {
+                        container.innerHTML = '';
+                        currentIndex = 0;
+                        addSkill();
+                    }, 3000);
+                }
+            }
+
+            // Start after a delay
+            setTimeout(addSkill, 1000);
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize starfield background
+            new StarfieldBackground();
+            
+            // Initialize typing animation
+            const typingElement = document.getElementById('typing-text');
+            new TypingAnimation(typingElement, "Hello, I'm Tse Brian C");
+            
+            // Initialize motivational quotes
+            new MotivationalQuotes();
+            
+            // Initialize scroll reveal
+            new ScrollReveal();
+            
+            // Initialize contact form
+            new ContactForm();
+            
+            // Populate content
+            populateAchievements();
+            populateSkills();
+            populateSoftSkills();
+        });
+    </script>
+</body>
+</html>
